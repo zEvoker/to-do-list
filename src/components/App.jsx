@@ -15,12 +15,23 @@ function App() {
     const [todo, setTodo] = useState(true);
 
     useEffect(() => {
+        chrome.storage.sync.get(["tasks"], (result) => {
+            if (result.tasks) {
+                setTasks(result.tasks);
+            }
+        });
         const canvas = canvasRef.current;
         const ctx = canvas.getContext("2d");
         canvas.width = window.innerWidth;
         canvas.height = window.innerHeight;
         setCanvasCTX(ctx);
     }, [canvasRef]);
+
+    useEffect(() => {
+        if (chrome && chrome.storage && chrome.storage.sync) {
+            chrome.storage.sync.set({ tasks });
+        }
+    }, [tasks]);
 
     const SetPos = (e) => {
         setMouseData({
@@ -40,12 +51,12 @@ function App() {
         if (e.buttons !== 1) return;
         const ctx = canvasCTX;
         ctx.beginPath();
-        ctx.moveTo(mouseData.x+4, mouseData.y-20);
+        ctx.moveTo(mouseData.x-7, mouseData.y-2);
         setMouseData({
             x: e.clientX,
             y: e.clientY,
         });
-        ctx.lineTo(e.clientX+4, e.clientY-20);
+        ctx.lineTo(e.clientX-7, e.clientY-2);
         ctx.strokeStyle = color;
         ctx.lineWidth = size;
         ctx.lineCap = "round";

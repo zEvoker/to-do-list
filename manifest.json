@@ -1,0 +1,16 @@
+{
+    "version": "1.0.0",
+    "manifest_version": 3,
+    "name": "zToDo",
+    "description": "This is a to-do-list Chrome extension built with React",
+    "action": {
+      "default_popup": "js/index.html",
+      "default_title": "zToDo",
+      "default_popup_container": {
+        "width": 1200,
+        "height": 600
+      }
+    },
+    "permissions": ["storage"]
+  }
+  
