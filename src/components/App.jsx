@@ -1,5 +1,5 @@
-import React, { useState, useEffect, useRef } from "react";
 import './App.css'
+import React, { useState, useEffect, useRef } from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faPalette, faTrashAlt } from "@fortawesome/free-solid-svg-icons";
 import { DragDropContext, Draggable, Droppable } from "react-beautiful-dnd";
@@ -40,12 +40,12 @@ function App() {
         if (e.buttons !== 1) return;
         const ctx = canvasCTX;
         ctx.beginPath();
-        ctx.moveTo(mouseData.x, mouseData.y);
+        ctx.moveTo(mouseData.x+4, mouseData.y-20);
         setMouseData({
             x: e.clientX,
             y: e.clientY,
         });
-        ctx.lineTo(e.clientX, e.clientY);
+        ctx.lineTo(e.clientX+4, e.clientY-20);
         ctx.strokeStyle = color;
         ctx.lineWidth = size;
         ctx.lineCap = "round";
@@ -91,22 +91,20 @@ function App() {
                 updatedTasks[id][1] = !updatedTasks[id][1];
                 return updatedTasks;
             } else {
-                return prevTasks; // or handle the error accordingly
+                return prevTasks;
             }
         });
-        console.log(tasks)
     }
     function deleteItem(id) {
         setTasks((prevTasks) => {
             if (prevTasks && id >= 0 && id < prevTasks.length) {
                 const updatedTasks = [...prevTasks];
-                updatedTasks.splice(id, 1); // Remove the task at the specified index
+                updatedTasks.splice(id, 1);
                 return updatedTasks;
             } else {
-                return prevTasks; // or handle the error accordingly
+                return prevTasks;
             }
         });
-        console.log(tasks)
     }
 
     const handleDragDrop = (results) => {
