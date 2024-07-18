@@ -13,7 +13,7 @@ This project was made with ReactJS using canvas for drawing and react-beautiful-
 ### Chrome extension
 
 To get the Chrome extension:
-- Clone the repository.
-- Run `npm run build` in the terminal, which will create a `dist` folder in your root directory.
-- Go to `chrome://extensions` and turn on developer mode.
-- Click `Load unpacked` and choose the `dist` folder to upload.
+- Go to `<> Code`, download the repo as zip file and extract the contents
+- Go to `chrome://extensions` and turn on developer mode
+- Click `Load unpacked` and choose the `dist` folder in the root directory of the project to upload
+- Once uploaded, you can view the application among your extensions
